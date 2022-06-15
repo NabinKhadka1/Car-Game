@@ -36,7 +36,6 @@ function gameOver(){
 function generateEnemy(car){
     let enemy = document.querySelectorAll('.enemy');
     enemy.forEach(singleEnemy =>{
-        // console.log(singleEnemy,singleEnemy.y)
         if(collisionDetection(car,singleEnemy)){
             gameOver();
         }
@@ -46,8 +45,6 @@ function generateEnemy(car){
 
         }
         singleEnemy.y += position.value;
-        // console.log(singleEnemy,singleEnemy.y)
-
         singleEnemy.style.top = singleEnemy.y + 'px';
     })
 }
@@ -55,17 +52,14 @@ function generateEnemy(car){
 function play(){
     let car = document.querySelector('.car');
     let lane = gameContainer.getBoundingClientRect();
-    // console.log(lane);
     if (start.isTrue){
         generateEnemy(car);
     
         position.x = car.offsetLeft;
         position.y = car.offsetTop;
-        // console.log(lane.width);
     
         if(arrows.ArrowDown && position.y < (lane.bottom - CAR_HEIGHT)){
             position.y += position.value;
-            // console.log(position.y)
         } else if(arrows.ArrowUp && position.y > (lane.top + CAR_HEIGHT)){
             position.y -= position.value;
         } else if(arrows.ArrowLeft && position.x > 0 ){
@@ -82,7 +76,6 @@ function play(){
     }
 }
 function startGame(e){
-    // console.log(e.key);
     gameContainer.classList.remove('hidden');
     startInfo.classList.add('hidden');
 
