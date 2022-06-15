@@ -1,7 +1,3 @@
-const CAR_WIDTH = 50;
-const CAR_HEIGHT = 70;
-const CONTAINER_WIDTH = 400;
-
 const mainContainer = document.getElementById('main-container');
 const gameContainer = document.querySelector('.game-container');
 const startInfo = document.querySelector('.start-info');
@@ -22,9 +18,14 @@ function collisionDetection(mycar,myenemy){
     const myCar = mycar.getBoundingClientRect();
     const myEnemy = myenemy.getBoundingClientRect();
     
-    return  !((myCar.bottom < myEnemy.top) || (myCar.top > myEnemy.bottom) || (
-        myCar.right < myEnemy.left) || (
-            myCar.left > myEnemy.right))
+    if (
+        myCar.x + CAR_WIDTH >= myEnemy.x &&
+        myCar.x <= myEnemy.x + CAR_WIDTH &&
+        myCar.y + CAR_HEIGHT >= myEnemy.y &&
+        myCar.y <= myEnemy.y + CAR_HEIGHT
+    ){
+        return true;
+    }
 }
 function gameOver(){
     start.isTrue = false;
